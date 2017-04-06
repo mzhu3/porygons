@@ -45,9 +45,21 @@ triangles
 void draw_polygons( struct matrix *polygons, screen s, color c ) {
   int a;
   int b;
-  for(a = 0; a < polygons->lastcol;a+=3){
-    draw_line(polygons[
-}
+  if(polygons->lastcol == 8){
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c); 
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c); 
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+    draw_line(polygons[0][a],polygons[1][a],polygons[0][a+1],polygons[1][a+1],s,c);
+
+  }
 
 
 /*======== void add_box() ==========
@@ -76,19 +88,15 @@ void add_box( struct matrix * edges,
   z0 = z;
   z1 = z-depth;
 
-  //front
-  add_edge(edges, x0, y0, z0, x0+2, y0+2, z0+2);
-  add_edge(edges, x1, y0, z0, x1+2, y0+2, z0+2);
-  add_edge(edges, x1, y1, z0, x1+2, y1+2, z0+2);
-  add_edge(edges, x0, y1, z0, x0+2, y1+2, z0+2);
-
-  //back
-  add_edge(edges, x0, y0, z1, x0+2, y0+2, z1+2);
-  add_edge(edges, x1, y0, z1, x1+2, y0+2, z1+2);
-  add_edge(edges, x1, y1, z1, x1+2, y1+2, z1+2);
-  add_edge(edges, x0, y1, z1, x0+2, y1+2, z1+2);
+  add_edge(edges,x,y,z,x,y,z);//1
+  add_edge(edges,x+width,y-height,z-depth,x+width,y-height,z-depth);
+  add_edge(edges,x,y-height,z,x,y-height,z);
+  add_edge(edges,x+width,y-height,z,x+width,y-height,z);
+  add_edge(edges,x+width,y,z,x+width,y,z);
+  add_edge(edges,x,y,z-depth,x,y,z-depth);
+  add_edge(edges,x+width,y,z-depth,x+width,y,z-depth);
+  add_edge(edges,x,y-height,z-depth,x,y-height,z-depth);
 }
-
 /*======== void add_sphere() ==========
   Inputs:   struct matrix * points
             double cx
