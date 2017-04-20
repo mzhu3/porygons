@@ -1,0 +1,13 @@
+ident
+sphere
+110 0 0 75
+sphere
+110 0 0 200
+torus
+110 -100 0 25 175
+move
+200 250 0
+apply
+display
+save
+questionmark.png
